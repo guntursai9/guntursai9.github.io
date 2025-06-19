@@ -11,54 +11,76 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fafb;
+      background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
       color: #222;
       margin: 0;
-      padding: 30px 15px;
+      padding: 40px 20px;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: flex-start;
     }
     .container {
-      background: #fff;
       max-width: 900px;
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
-      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      background: #ffffffdd;
+      backdrop-filter: saturate(180%) blur(10px);
     }
     h1, h2 {
       color: #004466;
       margin-bottom: 15px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       text-align: center;
-      margin-bottom: 40px;
+      padding: 30px 0;
+      background: linear-gradient(90deg, #0288d1, #26c6da);
+      color: white;
+      margin: 0;
+      letter-spacing: 1.1px;
     }
+    section {
+      padding: 25px 40px;
+      transition: background-color 0.3s ease;
+    }
+    /* Alternate section backgrounds */
+    section:nth-child(odd) {
+      background: #ffffffee;
+      border-left: 6px solid #0288d1;
+    }
+    section:nth-child(even) {
+      background: #e1f5feee;
+      border-left: 6px solid #26c6da;
+    }
+
     h2 {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       border-bottom: 3px solid #0077cc;
       padding-bottom: 8px;
-      margin-top: 40px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 700;
     }
     p, li, span {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #333;
-      line-height: 1.5;
+      line-height: 1.6;
     }
     ul {
       padding-left: 20px;
       margin-top: 10px;
     }
     ul li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     #email {
       color: #0077cc;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       user-select: none;
       display: inline-block;
       margin-top: 10px;
@@ -69,66 +91,81 @@
       text-decoration: underline;
     }
     .weather-joke {
-      background: #eef6fb;
-      border-left: 5px solid #0077cc;
-      padding: 15px 20px;
-      border-radius: 6px;
+      background: #b3e5fc;
+      border-left: 5px solid #0288d1;
+      padding: 18px 22px;
+      border-radius: 8px;
       margin-top: 15px;
+      font-style: italic;
+      color: #01579b;
+      box-shadow: 0 2px 8px rgba(2, 136, 209, 0.2);
     }
     .clock-section {
       text-align: center;
-      margin-top: 25px;
+      margin-top: 15px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #ccc;
     }
     #clock {
-      font-size: 1.6rem;
-      font-weight: 600;
+      font-size: 1.8rem;
+      font-weight: 700;
       color: #0077cc;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
     }
     #analog-clock {
-      background-color: #ddd;
+      background-color: #b3e5fc;
       border-radius: 50%;
-      box-shadow: 0 0 10px #aaa inset;
+      box-shadow: 0 0 15px #0288d1 inset;
       display: block;
       margin: 0 auto;
+      border: 3px solid #0288d1;
     }
     .flag-counter {
-      margin-top: 40px;
+      margin: 35px auto 40px;
       text-align: center;
     }
     .flag-counter img {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      border: 1px solid #81d4fa;
+      border-radius: 10px;
+      box-shadow: 2px 3px 10px rgba(2, 136, 209, 0.3);
       max-width: 100%;
       height: auto;
     }
     footer {
-      margin-top: 50px;
+      margin-top: 40px;
       padding: 20px;
       width: 100%;
       max-width: 900px;
       text-align: center;
       font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #ddd;
+      color: #555;
+      border-top: 1px solid #ccc;
+      font-style: italic;
     }
     footer a {
-      color: #0077cc;
+      color: #0288d1;
       text-decoration: none;
     }
     footer a:hover {
       text-decoration: underline;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       .container {
+        border-radius: 0;
+      }
+      section {
         padding: 20px 15px;
       }
       h1 {
         font-size: 2rem;
+        padding: 20px 0;
       }
       h2 {
         font-size: 1.5rem;
+      }
+      p, li, span {
+        font-size: 1rem;
       }
     }
   </style>
