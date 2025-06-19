@@ -211,7 +211,7 @@
     <section>
       <h2>Weather & Joke Updates</h2>
       <div class="weather-joke">
-        <p><strong>Real Time Weather (Cincinnati):</strong> <span id="weather"></span></p>
+        <p><strong>Real Time Weather (Dayton):</strong> <span id="weather"></span></p>
         <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
       </div>
     </section>
@@ -266,7 +266,7 @@
     }
   </script>
 
-  <script src="https://waph-uc.github.io/clock.js"></script>
+  <script src="https://waph-phung.github.io/clock.js"></script>
 
   <script>
     function fetchJoke() {
@@ -287,8 +287,8 @@
     setInterval(fetchJoke, 60000);
 
     $(document).ready(function () {
-      const apiKey = 'e14b293239674d558c6d32069774b83d';
-      const weatherEndpoint = `https://api.weatherbit.io/v2.0/current?&key=${apiKey}&city=Cincinnati&country=US`;
+      const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';  
+      const weatherEndpoint = `https://api.weatherbit.io/v2.0/current?&key=${apiKey}&city=Dayton&country=US`;
       $.get(weatherEndpoint, function (response) {
         const currentTemp = response.data[0].temp;
         const humidity = response.data[0].rh;
