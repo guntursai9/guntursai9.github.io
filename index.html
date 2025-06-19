@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sai Pranav Lalitaditya Guntur - Portfolio</title>
   <style>
-    /* Reset some default styles */
+    /* Reset */
     * {
       box-sizing: border-box;
     }
@@ -14,13 +14,11 @@
       background: #f9fafb;
       color: #222;
       margin: 0;
-      padding: 0;
-      line-height: 1.6;
+      padding: 30px 15px;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px 15px;
+      justify-content: center;
+      align-items: flex-start;
     }
     .container {
       background: #fff;
@@ -48,6 +46,7 @@
     p, li, span {
       font-size: 1rem;
       color: #333;
+      line-height: 1.5;
     }
     ul {
       padding-left: 20px;
@@ -90,6 +89,8 @@
       background-color: #ddd;
       border-radius: 50%;
       box-shadow: 0 0 10px #aaa inset;
+      display: block;
+      margin: 0 auto;
     }
     .flag-counter {
       margin-top: 40px;
@@ -138,7 +139,7 @@
 
     <section>
       <h2>Contact</h2>
-      <p id="email" onclick="toggleEmail()">Show my Email</p>
+      <p id="email" onclick="showhideEmail()">Show my Email</p>
     </section>
 
     <section>
@@ -173,15 +174,15 @@
     <section>
       <h2>Weather & Joke Updates</h2>
       <div class="weather-joke">
-        <p><strong>Real Time Weather in Cincinnati:</strong> <span id="weather">Loading...</span></p>
-        <p><strong>Random Joke:</strong> <span id="joke-container">Loading...</span></p>
+        <p><strong>Real Time Weather (Cincinnati):</strong> <span id="weather"></span></p>
+        <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
       </div>
     </section>
 
     <section class="clock-section">
       <h2>Current Time</h2>
-      <div id="clock">--:--:--</div>
-      <canvas id="analog-clock" width="150" height="150" aria-label="Analog clock" role="img"></canvas>
+      <div id="clock"></div>
+      <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
     </section>
 
     <section class="flag-counter">
@@ -192,60 +193,72 @@
     </section>
   </div>
 
-  <footer>
-    <p>© 2025 Sai Pranav Lalitaditya Guntur | <a href="mailto:gunturs1@udayton.edu">gunturs1@udayton.edu</a></p>
-  </footer>
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://waph-phung.github.io/clock.js"></script>
+
   <script>
-    // Toggle email display
-    let emailShown = false;
-    function toggleEmail() {
-      const emailEl = document.getElementById('email');
-      if(emailShown) {
-        emailEl.textContent = 'Show my Email';
+    var shown = false;
+    function showhideEmail() {
+      if (shown) {
+        document.getElementById("email").innerHTML = "Show my Email";
+        shown = false;
       } else {
-        emailEl.innerHTML = "<a href='mailto:gunturs1@udayton.edu'>gunturs1@udayton.edu</a>";
+        var myemail = "<a href='mailto:gunturs1@udayton.edu'>gunturs1@udayton.edu</a>";
+        document.getElementById("email").innerHTML = myemail;
+        shown = true;
       }
-      emailShown = !emailShown;
     }
 
-    // Digital clock update
-    function updateDigitalClock() {
+    function updateClock() {
       const now = new Date();
-      document.getElementById('clock').textContent = now.toLocaleTimeString();
+      document.getElementById("clock").textContent = now.toLocaleTimeString();
     }
-    setInterval(updateDigitalClock, 1000);
-    updateDigitalClock();
+    setInterval(updateClock, 1000);
+    updateClock();
 
-    // Analog clock setup & draw
-    const canvas = document.getElementById('analog-clock');
-    const ctx = canvas.getContext('2d');
-    const radius = canvas.height / 2;
+    var canvas = document.getElementById("analog-clock");
+    var ctx = canvas.getContext("2d");
+    var radius = canvas.height / 2;
     ctx.translate(radius, radius);
-    const clockRadius = radius * 0.9;
-
-    function drawClock() {
-      drawFace(ctx, clockRadius);
-      drawNumbers(ctx, clockRadius);
-      drawTime(ctx, clockRadius);
-    }
+    radius = radius * 0.9;
     setInterval(drawClock, 1000);
 
-    // Fetch joke from JokeAPI
+    function drawClock() {
+      drawFace(ctx, radius);
+      drawNumbers(ctx, radius);
+      drawTime(ctx, radius);
+    }
+  </script>
+
+  <script src="https://waph-uc.github.io/clock.js"></script>
+
+  <script>
     function fetchJoke() {
       $.ajax({
         url: 'https://v2.jokeapi.dev/joke/Any',
         type: 'GET',
-        success: function(data) {
-          const joke = data.setup ? data.setup + ' ' + data.delivery : data.joke;
+        success: function (data) {
+          var joke = data.setup ? data.setup + ' ' + data.delivery : data.joke;
           $('#joke-container').text(joke);
         },
-        error: function() {
+        error: function () {
           $('#joke-container').text('Failed to load joke.');
         }
       });
     }
+
     fetchJoke();
-    setInterval(fetchJ
+    setInterval(fetchJoke, 60000);
+
+    $(document).ready(function () {
+      const apiKey = 'e14b293239674d558c6d32069774b83d';
+      const weatherEndpoint = `https://api.weatherbit.io/v2.0/current?&key=${apiKey}&city=Cincinnati&country=US`;
+      $.get(weatherEndpoint, function (response) {
+        const currentTemp = response.data[0].temp;
+        const humidity = response.data[0].rh;
+        const windSpeed = response.data[0].wind_spd;
+        $('#weather').html(`${currentTemp}°C, Humidity: ${humidity}%, Wind Speed: ${windSpeed} m/s`);
+      });
+    });
+  </script>
+</body>
+</html>
