@@ -5,49 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sai Pranav Lalitaditya Guntur - Portfolio</title>
   <style>
-    /* Reset */
     * {
       box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
       color: #222;
       margin: 0;
-      padding: 40px 20px;
+      padding: 80px 20px 40px;
       min-height: 100vh;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #0288d1;
+      color: white;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      gap: 30px;
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
     .container {
       max-width: 900px;
-      width: 100%;
+      margin: 0 auto;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
       overflow: hidden;
       background: #ffffffdd;
       backdrop-filter: saturate(180%) blur(10px);
     }
-    h1, h2 {
-      color: #004466;
-      margin-bottom: 15px;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    .photo {
+      text-align: center;
+      padding: 30px 0 10px;
+    }
+    .photo img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      border: 4px solid #fff;
     }
     h1 {
-      font-size: 2.8rem;
+      font-size: 2.4rem;
       text-align: center;
-      padding: 30px 0;
-      background: linear-gradient(90deg, #0288d1, #26c6da);
-      color: white;
-      margin: 0;
-      letter-spacing: 1.1px;
+      color: #004466;
+      margin: 10px 0 20px;
+      letter-spacing: 1px;
     }
     section {
       padding: 25px 40px;
-      transition: background-color 0.3s ease;
     }
-    /* Alternate section backgrounds */
     section:nth-child(odd) {
       background: #ffffffee;
       border-left: 6px solid #0288d1;
@@ -56,7 +80,6 @@
       background: #e1f5feee;
       border-left: 6px solid #26c6da;
     }
-
     h2 {
       font-size: 1.9rem;
       border-bottom: 3px solid #0077cc;
@@ -72,23 +95,9 @@
     }
     ul {
       padding-left: 20px;
-      margin-top: 10px;
     }
     ul li {
       margin-bottom: 10px;
-    }
-    #email {
-      color: #0077cc;
-      cursor: pointer;
-      font-weight: 700;
-      user-select: none;
-      display: inline-block;
-      margin-top: 10px;
-      transition: color 0.3s ease;
-    }
-    #email:hover {
-      color: #004466;
-      text-decoration: underline;
     }
     .weather-joke {
       background: #b3e5fc;
@@ -102,7 +111,6 @@
     }
     .clock-section {
       text-align: center;
-      margin-top: 15px;
       padding-bottom: 40px;
       border-bottom: 1px solid #ccc;
     }
@@ -111,33 +119,10 @@
       font-weight: 700;
       color: #0077cc;
       margin-bottom: 15px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    }
-    #analog-clock {
-      background-color: #b3e5fc;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #0288d1 inset;
-      display: block;
-      margin: 0 auto;
-      border: 3px solid #0288d1;
-    }
-    .flag-counter {
-      margin: 35px auto 40px;
-      text-align: center;
-    }
-    .flag-counter img {
-      border: 1px solid #81d4fa;
-      border-radius: 10px;
-      box-shadow: 2px 3px 10px rgba(2, 136, 209, 0.3);
-      max-width: 100%;
-      height: auto;
     }
     footer {
-      margin-top: 40px;
-      padding: 20px;
-      width: 100%;
-      max-width: 900px;
       text-align: center;
+      padding: 20px;
       font-size: 0.9rem;
       color: #555;
       border-top: 1px solid #ccc;
@@ -151,37 +136,43 @@
       text-decoration: underline;
     }
     @media (max-width: 650px) {
-      .container {
-        border-radius: 0;
+      nav {
+        flex-wrap: wrap;
+        gap: 15px;
+        font-size: 0.9rem;
       }
       section {
         padding: 20px 15px;
-      }
-      h1 {
-        font-size: 2rem;
-        padding: 20px 0;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-      p, li, span {
-        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#summary">Summary</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#clock">Clock</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <div class="container">
+    <div class="photo">
+      <img src="photo.jpg" alt="Sai Pranav Photo">
+    </div>
     <h1>Sai Pranav Lalitaditya Guntur</h1>
 
-    <section>
+    <section id="summary">
       <h2>Professional Summary</h2>
       <p>
         Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. Proficient with cloud platforms such as Snowflake, AWS Redshift, and GCP BigQuery.
       </p>
     </section>
 
-    <section>
+    <section id="experience">
       <h2>Experience</h2>
       <ul>
         <li>
@@ -195,7 +186,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="education">
       <h2>Education</h2>
       <ul>
         <li><strong>Master of Science in Computer Science</strong> – University of Dayton (Aug 2023 – Jun 2025)</li>
@@ -203,62 +194,44 @@
       </ul>
     </section>
 
-    <section>
+    <section id="projects">
       <h2>Projects</h2>
       <div class="weather-joke">
         <ul>
-          <li>
-            <strong>Weather API integration</strong> - Integrated real time weather data using weatherbit API
-          </li>
-        <p><strong>Real Time Weather (Dayton):</strong> <span id="weather"></span></p>
-        <li>
-            <strong>Joke API integration</strong> - Implemented a random joke fetcher using Joke API, generrates random joke for every 60 seconds
-          </li>
-        <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
-      </ul>
+          <li><strong>Weather API Integration</strong> - Integrated real-time weather data using Weatherbit API.</li>
+          <p><strong>Real Time Weather (Dayton):</strong> <span id="weather"></span></p>
+          <li><strong>Joke API Integration</strong> - Implemented a random joke fetcher using Joke API, generates new jokes every 60 seconds.</li>
+          <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
+        </ul>
       </div>
     </section>
 
-    <section class="clock-section">
+    <section class="clock-section" id="clock">
       <h2>Current Time</h2>
-      <div id="clock"></div>
+      <div id="clock-text"></div>
       <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
     </section>
 
-    <section class="flag-counter">
-      <h2>Flag Counter</h2>
-      <a href="https://info.flagcounter.com/zEr8" target="_blank" rel="noopener noreferrer">
-        <img src="https://s01.flagcounter.com/count2/zEr8/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0" />
-      </a>
-    </section>
-
-    <!-- Contact section moved to the bottom -->
-    <section>
+    <section id="contact">
       <h2>Contact</h2>
       <p><strong>Email:</strong> <a href="mailto:gunturs1@udayton.edu">gunturs1@udayton.edu</a></p>
       <p><strong>Phone:</strong> <a href="tel:+18015098508">+1 801-509-8508</a></p>
       <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sai-pranav1" target="_blank" rel="noopener noreferrer">linkedin.com/in/sai-pranav1</a></p>
     </section>
+
+    <footer>
+      &copy; 2025 Sai Pranav Lalitaditya Guntur. All rights reserved.
+    </footer>
   </div>
 
+  <!-- JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://waph-phung.github.io/clock.js"></script>
 
   <script>
-    var shown = false;
-    function showhideEmail() {
-      if (shown) {
-        document.getElementById("email").innerHTML = "Show my Email";
-        shown = false;
-      } else {
-        var myemail = "<a href='mailto:gunturs1@udayton.edu'>gunturs1@udayton.edu</a>";
-        document.getElementById("email").innerHTML = myemail;
-        shown = true;
-      }
-    }
-
     function updateClock() {
       const now = new Date();
-      document.getElementById("clock").textContent = now.toLocaleTimeString();
+      document.getElementById("clock-text").textContent = now.toLocaleTimeString();
     }
     setInterval(updateClock, 1000);
     updateClock();
@@ -270,16 +243,6 @@
     radius = radius * 0.9;
     setInterval(drawClock, 1000);
 
-    function drawClock() {
-      drawFace(ctx, radius);
-      drawNumbers(ctx, radius);
-      drawTime(ctx, radius);
-    }
-  </script>
-
-  <script src="https://waph-phung.github.io/clock.js"></script>
-
-  <script>
     function updateJoke() {
       $.getJSON('https://v2.jokeapi.dev/joke/Any', function(data) {
         if (data.type === 'single') {
@@ -304,5 +267,6 @@
     updateWeather();
     setInterval(updateWeather, 60000);
   </script>
+
 </body>
 </html>
