@@ -168,141 +168,114 @@
         font-size: 1rem;
       }
     }
+    /* Navbar styling */
+    nav.navbar {
+      background:#fff; 
+      padding: 10px 20px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    nav.navbar a.navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #004466;
+      text-decoration: none;
+    }
+    nav.navbar ul.navbar-nav {
+      list-style:none; 
+      display:flex; 
+      gap:20px; 
+      margin:0; 
+      padding:0;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    nav.navbar ul.navbar-nav li a.nav-link {
+      color: #004466;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    nav.navbar ul.navbar-nav li a.nav-link:hover {
+      color: #0288d1;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Sai Pranav Lalitaditya Guntur</h1>
-
-    <section>
-      <h2>Professional Summary</h2>
-      <p>
-        Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. Proficient with cloud platforms such as Snowflake, AWS Redshift, and GCP BigQuery.
-      </p>
-    </section>
-
-    <section>
-      <h2>Experience</h2>
-      <ul>
-        <li>
-          <strong>Data Analyst</strong> – Tata Consultancy Services (Apr 2021 – Jun 2023)
-          <ul>
-            <li>Led customer segmentation efforts, boosting marketing conversion by 20%.</li>
-            <li>Automated Power BI reports, reducing manual work by 35%.</li>
-            <li>Improved user engagement by 10% through behavioral analytics.</li>
+  <div id="container--main" class="container">
+    <!-- Navbar with corrected links -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">Sai Pranav</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="#ProfessionalSummary">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="#TechnicalSkills">Technical Skills</a></li>
+              <li class="nav-item"><a class="nav-link" href="#WorkExperience">Work Experience</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Certifications">Certifications</a></li>
+              <li class="nav-item"><a class="nav-link" href="waph.html">Course Introduction</a></li>
           </ul>
-        </li>
-      </ul>
-    </section>
+      </div>
+    </nav>
 
-    <section>
-      <h2>Education</h2>
-      <ul>
-        <li><strong>Master of Science in Computer Science</strong> – University of Dayton (Aug 2023 – Jun 2025)</li>
-        <li><strong>Bachelor of Technology in Electronics and Communications Engineering</strong> – BV Raju Institute of Technology (Aug 2017 – May 2021)</li>
-      </ul>
-    </section>
+    <div class="container">
+      <h1>Sai Pranav Lalitaditya Guntur</h1>
 
-    <section>
-      <h2>Projects</h2>
-      <div class="weather-joke">
+      <section id="ProfessionalSummary">
+        <h2>Professional Summary</h2>
+        <p>
+          Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. Proficient with cloud platforms such as Snowflake, AWS Redshift, and GCP BigQuery.
+        </p>
+      </section>
+
+      <section id="TechnicalSkills">
+        <h2>Technical Skills</h2>
+        <ul>
+          <li>SQL</li>
+          <li>Python</li>
+          <li>Tableau</li>
+          <li>Power BI</li>
+          <li>Predictive Analytics</li>
+          <li>Cloud Platforms: Snowflake, AWS Redshift, GCP BigQuery</li>
+        </ul>
+      </section>
+
+      <section id="WorkExperience">
+        <h2>Experience</h2>
         <ul>
           <li>
-            <strong>Weather API integration</strong> - Integrated real time weather data using weatherbit API
+            <strong>Data Analyst</strong> – Tata Consultancy Services (Apr 2021 – Jun 2023)
+            <ul>
+              <li>Led customer segmentation efforts, boosting marketing conversion by 20%.</li>
+              <li>Automated Power BI reports, reducing manual work by 35%.</li>
+              <li>Analyzed user behavior to increase engagement by 10%.</li>
+            </ul>
           </li>
-        <p><strong>Real Time Weather (Dayton):</strong> <span id="weather"></span></p>
-        <li>
-            <strong>Joke API integration</strong> - Implemented a random joke fetcher using Joke API, generrates random joke for every 60 seconds
+          <li>
+            <strong>Data Analyst II</strong> – Oak Street Health (Aug 2023 – Present)
+            <ul>
+              <li>Improved decision-making efficiency through advanced analytics.</li>
+              <li>Enhanced forecasting accuracy for business growth strategies.</li>
+            </ul>
           </li>
-        <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
-      </ul>
-      </div>
-    </section>
+        </ul>
+      </section>
 
-    <section class="clock-section">
-      <h2>Current Time</h2>
-      <div id="clock"></div>
-      <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
-    </section>
-
-    <section class="flag-counter">
-      <h2>Flag Counter</h2>
-      <a href="https://info.flagcounter.com/zEr8" target="_blank" rel="noopener noreferrer">
-        <img src="https://s01.flagcounter.com/count2/zEr8/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0" />
-      </a>
-    </section>
-
-    <!-- Contact section moved to the bottom -->
-    <section>
-      <h2>Contact</h2>
-      <p><strong>Email:</strong> <a href="mailto:gunturs1@udayton.edu">gunturs1@udayton.edu</a></p>
-      <p><strong>Phone:</strong> <a href="tel:+18015098508">+1 801-509-8508</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sai-pranav1" target="_blank" rel="noopener noreferrer">linkedin.com/in/sai-pranav1</a></p>
-    </section>
+      <!-- Added Certifications Section -->
+      <section id="Certifications">
+        <h2>Certifications</h2>
+        <ul>
+          <li>Python for Data Science</li>
+          <li>Google Data Analytics Professional Certificate</li>
+          <li>Microsoft Certified: Azure Data Fundamentals</li>
+        </ul>
+      </section>
+    </div>
   </div>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <script>
-    var shown = false;
-    function showhideEmail() {
-      if (shown) {
-        document.getElementById("email").innerHTML = "Show my Email";
-        shown = false;
-      } else {
-        var myemail = "<a href='mailto:gunturs1@udayton.edu'>gunturs1@udayton.edu</a>";
-        document.getElementById("email").innerHTML = myemail;
-        shown = true;
-      }
-    }
-
-    function updateClock() {
-      const now = new Date();
-      document.getElementById("clock").textContent = now.toLocaleTimeString();
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    var canvas = document.getElementById("analog-clock");
-    var ctx = canvas.getContext("2d");
-    var radius = canvas.height / 2;
-    ctx.translate(radius, radius);
-    radius = radius * 0.9;
-    setInterval(drawClock, 1000);
-
-    function drawClock() {
-      drawFace(ctx, radius);
-      drawNumbers(ctx, radius);
-      drawTime(ctx, radius);
-    }
-  </script>
-
-  <script src="https://waph-phung.github.io/clock.js"></script>
-
-  <script>
-    function updateJoke() {
-      $.getJSON('https://v2.jokeapi.dev/joke/Any', function(data) {
-        if (data.type === 'single') {
-          $('#joke-container').text(data.joke);
-        } else {
-          $('#joke-container').text(data.setup + ' ... ' + data.delivery);
-        }
-      });
-    }
-    updateJoke();
-    setInterval(updateJoke, 60000);
-
-    function updateWeather() {
-      const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';
-      const city = 'Dayton';
-      $.getJSON(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`, function(data) {
-        const weather = data.data[0];
-        const weatherText = `${weather.temp}°C, Humidity: ${weather.rh}%, Wind Speed: ${weather.wind_spd.toFixed(1)} m/s`;
-        $('#weather').text(weatherText);
-      });
-    }
-    updateWeather();
-    setInterval(updateWeather, 60000);
-  </script>
 </body>
 </html>
