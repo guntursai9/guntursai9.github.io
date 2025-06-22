@@ -4,222 +4,213 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sai Pranav Lalitaditya Guntur - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
     html {
       scroll-behavior: smooth;
     }
-
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #f4f6f9, #e3f2fd);
-      color: #1a1a1a;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+      color: #222;
+      margin: 0;
+      padding-top: 70px;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #0288d1;
+      padding: 12px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      list-style: none;
       margin: 0;
       padding: 0;
     }
 
-    nav {
-      background-color: #0d47a1;
-      padding: 15px 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    nav a {
-      margin: 0 18px;
+    nav ul li a {
       color: white;
-      font-weight: 500;
       text-decoration: none;
-      font-size: 1.05rem;
-      transition: color 0.3s ease;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #bbdefb;
+    nav ul li a:hover {
+      color: #cfd8dc;
     }
 
     .container {
-      max-width: 960px;
-      margin: 40px auto;
-      background: white;
+      max-width: 900px;
+      margin: auto;
+      background: #ffffffdd;
       border-radius: 12px;
-      padding: 30px 35px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
     }
 
-    .photo-section {
+    /* Header */
+    .header {
+      background: linear-gradient(90deg, #0288d1, #26c6da);
+      color: white;
+      padding: 40px 20px;
       text-align: center;
-      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .photo-section img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
+    .header img {
       border-radius: 50%;
-      border: 3px solid #90caf9;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      font-size: 2.6rem;
-      text-align: center;
-      color: #0d47a1;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      color: #1565c0;
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
       margin-bottom: 15px;
-      border-bottom: 2px solid #bbdefb;
-      padding-bottom: 5px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
     }
 
     section {
-      margin-bottom: 35px;
+      padding: 25px 40px;
     }
 
-    p, li {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.05rem;
+    section:nth-child(odd) {
+      background: #ffffffee;
+      border-left: 6px solid #0288d1;
+    }
+
+    section:nth-child(even) {
+      background: #e1f5feee;
+      border-left: 6px solid #26c6da;
+    }
+
+    h2 {
+      color: #004466;
+      font-size: 1.9rem;
+      border-bottom: 3px solid #0077cc;
+      padding-bottom: 8px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    p, li, span {
+      font-size: 1.1rem;
       line-height: 1.6;
-      color: #333;
     }
 
     ul {
       padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
+      margin-top: 10px;
     }
 
     #email {
-      color: #0d47a1;
-      font-weight: 600;
+      color: #0077cc;
       cursor: pointer;
-      transition: all 0.3s ease;
+      font-weight: 700;
+      user-select: none;
+      display: inline-block;
+      margin-top: 10px;
     }
 
     #email:hover {
-      color: #1565c0;
       text-decoration: underline;
     }
 
     .weather-joke {
-      background-color: #e3f2fd;
-      border-left: 5px solid #64b5f6;
-      padding: 20px;
-      border-radius: 10px;
-      font-style: italic;
-      color: #0d47a1;
+      background: #b3e5fc;
+      border-left: 5px solid #0288d1;
+      padding: 18px 22px;
+      border-radius: 8px;
       margin-top: 15px;
+      font-style: italic;
+      color: #01579b;
+    }
+
+    .clock-section {
+      text-align: center;
+      padding-bottom: 40px;
     }
 
     #clock {
-      font-size: 1.6rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #1565c0;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0077cc;
+      margin-bottom: 15px;
     }
 
-    canvas {
-      display: block;
-      margin: 0 auto;
-      background: #bbdefb;
+    #analog-clock {
+      background-color: #b3e5fc;
       border-radius: 50%;
-      border: 3px solid #90caf9;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1) inset;
+      border: 3px solid #0288d1;
+      box-shadow: 0 0 15px #0288d1 inset;
     }
 
     .flag-counter {
       text-align: center;
-      margin-top: 30px;
+      padding: 30px;
     }
 
     .flag-counter img {
-      max-width: 100%;
-      height: auto;
+      border: 1px solid #81d4fa;
       border-radius: 10px;
-      border: 1px solid #90caf9;
-      box-shadow: 2px 3px 10px rgba(13, 71, 161, 0.15);
+      box-shadow: 2px 3px 10px rgba(2, 136, 209, 0.3);
     }
 
     footer {
       text-align: center;
-      margin-top: 50px;
-      padding: 20px 10px;
-      font-size: 0.95rem;
-      background-color: #e3f2fd;
-      border-top: 1px solid #bbdefb;
-      color: #333;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #555;
     }
 
-    footer a {
-      color: #0d47a1;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .contact-details {
-      margin-top: 25px;
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #333;
-    }
-
-    .contact-details a {
-      color: #0d47a1;
-    }
-
-    @media screen and (max-width: 600px) {
-      h1 {
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .header h1 {
         font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-      }
-
-      nav a {
-        margin: 10px 8px;
-        font-size: 0.95rem;
-        display: inline-block;
-      }
-
-      .container {
-        padding: 25px 20px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
   <nav>
-    <a href="#contact">Contact</a>
-    <a href="#summary">Summary</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#weather">Weather</a>
-    <a href="#clock-section">Clock</a>
+    <ul>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#weather">Weather & Joke</a></li>
+      <li><a href="#clock">Clock</a></li>
+      <li><a href="#flags">Flags</a></li>
+    </ul>
   </nav>
 
   <div class="container">
-    <div class="photo-section">
-      <img src="your-photo.jpg" alt="Sai Pranav Lalitaditya Guntur" />
+    <!-- Header -->
+    <div class="header">
+      <img src="sai.jpg" alt="Sai Pranav Photo">
+      <h1>Sai Pranav Lalitaditya Guntur</h1>
     </div>
 
-    <h1>Sai Pranav Lalitaditya Guntur</h1>
-
+    <!-- Sections -->
     <section id="contact">
       <h2>Contact</h2>
       <p id="email" onclick="showhideEmail()">Show my Email</p>
@@ -228,7 +219,7 @@
     <section id="summary">
       <h2>Professional Summary</h2>
       <p>
-        Results-driven Data Analyst with 4+ years of experience in leveraging data to drive business success. Skilled in SQL, Python, Tableau, Power BI, and cloud platforms such as Snowflake, AWS Redshift, and BigQuery.
+        Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. Proficient with cloud platforms such as Snowflake, AWS Redshift, and GCP BigQuery.
       </p>
     </section>
 
@@ -236,12 +227,12 @@
       <h2>Experience</h2>
       <ul>
         <li>
-          <strong>Data Analyst II – Oak Street Health</strong><br />
-          Improved forecasting accuracy and developed dashboards that enhanced decision-making efficiency by 20%.
-        </li>
-        <li>
-          <strong>Data Analyst – Tata Consultancy Services</strong><br />
-          Led customer segmentation strategy, increasing campaign conversions by 20%. Automated reports, saving 35% in reporting time.
+          <strong>Data Analyst</strong> – Tata Consultancy Services (Apr 2021 – Jun 2023)
+          <ul>
+            <li>Led customer segmentation efforts, boosting marketing conversion by 20%.</li>
+            <li>Automated Power BI reports, reducing manual work by 35%.</li>
+            <li>Improved user engagement by 10% through behavioral analytics.</li>
+          </ul>
         </li>
       </ul>
     </section>
@@ -249,101 +240,99 @@
     <section id="education">
       <h2>Education</h2>
       <ul>
-        <li><strong>MS in Computer Science</strong>, University of Dayton (2023 – 2025)</li>
-        <li><strong>B.Tech in ECE</strong>, BV Raju Institute of Technology (2017 – 2021)</li>
+        <li><strong>Master of Science in Computer Science</strong> – University of Dayton (Aug 2023 – Jun 2025)</li>
+        <li><strong>Bachelor of Technology in Electronics and Communications Engineering</strong> – BV Raju Institute of Technology (Aug 2017 – May 2021)</li>
       </ul>
     </section>
 
     <section id="weather">
-      <h2>Weather & Joke</h2>
+      <h2>Weather & Joke Updates</h2>
       <div class="weather-joke">
-        <p><strong>Weather in Dayton:</strong> <span id="weather-data">Loading...</span></p>
-        <p><strong>Joke:</strong> <span id="joke-container">Fetching joke...</span></p>
+        <p><strong>Real Time Weather (Cincinnati):</strong> <span id="weather-info"></span></p>
+        <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
       </div>
     </section>
 
-    <section id="clock-section">
-      <h2>Clock</h2>
-      <div id="clock"></div>
+    <section id="clock" class="clock-section">
+      <h2>Current Time</h2>
+      <div id="clock-display"></div>
       <canvas id="analog-clock" width="150" height="150"></canvas>
     </section>
 
-    <section class="flag-counter">
-      <h2>Visitors</h2>
-      <a href="https://info.flagcounter.com/zEr8">
+    <section id="flags" class="flag-counter">
+      <h2>Flag Counter</h2>
+      <a href="https://info.flagcounter.com/zEr8" target="_blank" rel="noopener noreferrer">
         <img src="https://s01.flagcounter.com/count2/zEr8/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" />
       </a>
     </section>
-
-    <div class="contact-details">
-      <h2>Get in Touch</h2>
-      <p><strong>Email:</strong> <a href="mailto:gunturs1@udayton.edu">gunturs1@udayton.edu</a></p>
-      <p><strong>Phone:</strong> (+1) 801-509-8508</p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sai-pranav1" target="_blank">linkedin.com/in/sai-pranav1</a></p>
-    </div>
   </div>
 
   <footer>
-    &copy; 2025 Sai Pranav Lalitaditya Guntur — <a href="mailto:gunturs1@udayton.edu">gunturs1@udayton.edu</a>
+    &copy; 2025 Sai Pranav Guntur. All rights reserved.
   </footer>
 
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://waph-uc.github.io/clock.js"></script>
+
   <script>
-    // Email toggle
     var shown = false;
     function showhideEmail() {
-      const email = document.getElementById("email");
       if (shown) {
-        email.innerHTML = "Show my Email";
+        document.getElementById("email").innerHTML = "Show my Email";
         shown = false;
       } else {
-        email.innerHTML = "<a href='mailto:gunturs1@udayton.edu'>gunturs1@udayton.edu</a>";
+        document.getElementById("email").innerHTML = "<a href='mailto:gunturs1@udayton.edu'>gunturs1@udayton.edu</a>";
         shown = true;
       }
     }
 
-    // Digital clock
     function updateClock() {
       const now = new Date();
-      document.getElementById("clock").innerText = now.toLocaleTimeString();
+      document.getElementById("clock-display").textContent = now.toLocaleTimeString();
     }
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Joke API
+    var canvas = document.getElementById("analog-clock");
+    var ctx = canvas.getContext("2d");
+    var radius = canvas.height / 2;
+    ctx.translate(radius, radius);
+    radius = radius * 0.9;
+    setInterval(drawClock, 1000);
+
+    function drawClock() {
+      drawFace(ctx, radius);
+      drawNumbers(ctx, radius);
+      drawTime(ctx, radius);
+    }
+
     function fetchJoke() {
       $.ajax({
         url: 'https://v2.jokeapi.dev/joke/Any',
+        type: 'GET',
         success: function (data) {
           const joke = data.setup ? `${data.setup} ${data.delivery}` : data.joke;
           $('#joke-container').text(joke);
         },
         error: function () {
-          $('#joke-container').text('Unable to load joke.');
+          $('#joke-container').text('Failed to load joke.');
         }
       });
     }
-
-    // Weather API
-    function fetchWeather() {
-      const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';
-      const city = 'Dayton';
-      const url = `https://api.weatherbit.io/v2.0/current?key=${apiKey}&city=${city}&country=US`;
-
-      $.get(url, function (response) {
-        const data = response.data[0];
-        $('#weather-data').text(`${data.temp}°C, Humidity: ${data.rh}%, Wind: ${data.wind_spd} m/s`);
-      }).fail(function () {
-        $('#weather-data').text("Couldn't fetch weather.");
-      });
-    }
-
-    fetchWeather();
     fetchJoke();
     setInterval(fetchJoke, 60000);
-  </script>
 
-  <script src="https://waph-phung.github.io/clock.js"></script>
+    $(document).ready(function () {
+      const apiKey = 'e14b293239674d558c6d32069774b83d';
+      const weatherEndpoint = `https://api.weatherbit.io/v2.0/current?&key=${apiKey}&city=Cincinnati&country=US`;
+      $.get(weatherEndpoint, function (response) {
+        const currentTemp = response.data[0].temp;
+        const humidity = response.data[0].rh;
+        const windSpeed = response.data[0].wind_spd;
+        $('#weather-info').html(`${currentTemp}°C, Humidity: ${humidity}%, Wind Speed: ${windSpeed} m/s`);
+      });
+    });
+  </script>
 </body>
 </html>
