@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sai Pranav Lalitaditya Guntur - Portfolio</title>
+  
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
   <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-    }
+    /* Keep your existing styles you want */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
@@ -20,19 +21,14 @@
       justify-content: center;
       align-items: flex-start;
     }
-    .container {
+    .container-custom {
       max-width: 900px;
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      overflow: hidden;
       background: #ffffffdd;
       backdrop-filter: saturate(180%) blur(10px);
-    }
-    h1, h2 {
-      color: #004466;
-      margin-bottom: 15px;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 0;
     }
     h1 {
       font-size: 2.8rem;
@@ -43,271 +39,93 @@
       margin: 0;
       letter-spacing: 1.1px;
     }
+    /* Remove double container padding */
     section {
-      padding: 25px 40px;
-      transition: background-color 0.3s ease;
+      padding: 25px 20px;
     }
-    /* Alternate section backgrounds */
-    section:nth-child(odd) {
-      background: #ffffffee;
-      border-left: 6px solid #0288d1;
-    }
-    section:nth-child(even) {
-      background: #e1f5feee;
-      border-left: 6px solid #26c6da;
-    }
-
-    h2 {
-      font-size: 1.9rem;
-      border-bottom: 3px solid #0077cc;
-      padding-bottom: 8px;
-      margin-top: 0;
+    /* Image styling */
+    #pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
       margin-bottom: 20px;
-      font-weight: 700;
-    }
-    p, li, span {
-      font-size: 1.1rem;
-      color: #333;
-      line-height: 1.6;
-    }
-    ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-    ul li {
-      margin-bottom: 10px;
-    }
-    #email {
-      color: #0077cc;
-      cursor: pointer;
-      font-weight: 700;
-      user-select: none;
-      display: inline-block;
-      margin-top: 10px;
-      transition: color 0.3s ease;
-    }
-    #email:hover {
-      color: #004466;
-      text-decoration: underline;
-    }
-    .weather-joke {
-      background: #b3e5fc;
-      border-left: 5px solid #0288d1;
-      padding: 18px 22px;
-      border-radius: 8px;
-      margin-top: 15px;
-      font-style: italic;
-      color: #01579b;
-      box-shadow: 0 2px 8px rgba(2, 136, 209, 0.2);
-    }
-    .clock-section {
-      text-align: center;
-      margin-top: 15px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid #ccc;
-    }
-    #clock {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #0077cc;
-      margin-bottom: 15px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    }
-    .pic{
-      width: #50px;
-      height: #50px;
-      border-radius: 50%;
-      object-fit:cover;
-      margin-bottom: 15px;
-      box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
-    }
-    #analog-clock {
-      background-color: #b3e5fc;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #0288d1 inset;
-      display: block;
-      margin: 0 auto;
-      border: 3px solid #0288d1;
-    }
-    .flag-counter {
-      margin: 35px auto 40px;
-      text-align: center;
-    }
-    .flag-counter img {
-      border: 1px solid #81d4fa;
-      border-radius: 10px;
-      box-shadow: 2px 3px 10px rgba(2, 136, 209, 0.3);
-      max-width: 100%;
-      height: auto;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 20px;
-      width: 100%;
-      max-width: 900px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #555;
-      border-top: 1px solid #ccc;
-      font-style: italic;
-    }
-    footer a {
-      color: #0288d1;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    /* Navbar styles */
-    nav {
-      background: #0288d1;
-      padding: 12px 30px;
-      border-radius: 0 0 12px 12px;
-      margin-bottom: 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-    }
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 6px 10px;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-    }
-    nav ul li a:hover,
-    nav ul li a.active {
-      background-color: #26c6da;
-      color: #004466;
-    }
-    @media (max-width: 650px) {
-      .container {
-        border-radius: 0;
-      }
-      section {
-        padding: 20px 15px;
-      }
-      h1 {
-        font-size: 2rem;
-        padding: 20px 0;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-      p, li, span {
-        font-size: 1rem;
-      }
-      nav ul {
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
-      }
     }
   </style>
 </head>
 <body>
-  <div id="container--main" class="container">
+
+  <div class="container-custom">
 
     <!-- Navbar -->
-    <nav>
-      <ul>
-        <li><a href="#About" class="active">About</a></li>
-        <li><a href="#technical-skills">Technical Skills</a></li>
-        <li><a href="#work-experience">Work Experience</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="waph.html">Course Introduction</a></li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: #0288d1; border-radius: 0 0 12px 12px;">
+      <div class="container-fluid justify-content-center">
+        <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row gap-3">
+          <li class="nav-item"><a class="nav-link active" href="#About">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#technical-skills">Technical Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#work-experience">Work Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="waph.html">Course Introduction</a></li>
+        </ul>
+      </div>
     </nav>
 
-    <div class="container">
-      <h1 id="About">Sai Pranav Lalitaditya Guntur</h1>
+    <h1 id="About">Sai Pranav Lalitaditya Guntur</h1>
 
-      <section id="professional-summary">
-        <h2>About Me</h2>
-        <img src="HeadShot.jpeg" alt="my photo" id="pic"/>
-        <p>
-          Hello I am Sai Pranav Lalitaditya Guntur a Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. 
-        </p>
-      </section>
-
-      <section id="work-experience">
-        <h2>Experience</h2>
-        <ul>
-          <li>
-            <strong>Data Analyst</strong> – Tata Consultancy Services (Apr 2021 – Jun 2023)
-            <ul>
-              <li>Led customer segmentation efforts, boosting marketing conversion by 20%.</li>
-              <li>Automated Power BI reports, reducing manual work by 35%.</li>
-              <li>Improved user engagement by 10% through behavioral analytics.</li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-
-      <section id="technical-skills">
-        <h2>Technical Skills</h2>
-        <ul>
-          <li>SQL, Python, Tableau, Power BI</li>
-          <li>Predictive Analytics and Automation</li>
-          <li>Cloud Platforms: Snowflake, AWS Redshift, GCP BigQuery</li>
-        </ul>
-      </section>
-
-      <section id="certifications">
-        <h2>Certifications</h2>
-        <ul>
-          <li>Python for Data Science</li>
-          <li>Certified Data Analyst Professional</li>
-          <li>Tableau Desktop Specialist</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Projects</h2>
-        <div class="weather-joke">
-          <ul>
-            <li>
-              <strong>Weather API integration</strong> - Integrated real time weather data using weatherbit API
-            </li>
-          <p><strong>Real Time Weather (Dayton):</strong> <span id="weather"></span></p>
-          <li>
-              <strong>Joke API integration</strong> - Implemented a random joke fetcher using Joke API, generates random joke every 60 seconds
-            </li>
-          <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
-        </ul>
+    <!-- About Me -->
+    <section id="professional-summary" class="container py-4">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center">
+          <img src="HeadShot.jpeg" alt="my photo" id="pic" />
         </div>
-      </section>
+        <div class="col-md-8">
+          <h2>About Me</h2>
+          <p>
+            Hello I am Sai Pranav Lalitaditya Guntur, a Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <section class="clock-section">
-        <h2>Current Time</h2>
-        <div id="clock"></div>
-        <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
-      </section>
+    <!-- Work Experience -->
+    <section id="work-experience" class="container py-4">
+      <h2>Experience</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Data Analyst</strong> – Tata Consultancy Services (Apr 2021 – Jun 2023)
+          <ul class="mt-2">
+            <li>Led customer segmentation efforts, boosting marketing conversion by 20%.</li>
+            <li>Automated Power BI reports, reducing manual work by 35%.</li>
+            <li>Improved user engagement by 10% through behavioral analytics.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
 
-      <section class="flag-counter">
-        <h2>Flag Counter</h2>
-        <a href="https://info.flagcounter.com/zEr8" target="_blank" rel="noopener noreferrer">
-          <img src="https://s01.flagcounter.com/count2/zEr8/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0" />
-        </a>
-      </section>
+    <!-- Technical Skills -->
+    <section id="technical-skills" class="container py-4">
+      <h2>Technical Skills</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">SQL, Python, Tableau, Power BI</li>
+        <li class="list-group-item">Predictive Analytics and Automation</li>
+        <li class="list-group-item">Cloud Platforms: Snowflake, AWS Redshift, GCP BigQuery</li>
+      </ul>
+    </section>
 
-      <!-- Contact section moved to the bottom -->
-      <section>
-        <h2>Contact</h2>
-        <p><strong>Email:</strong> <a href="mailto:gunturs1@udayton.edu">gunturs1@udayton.edu</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+18015098508">+1 801-509-8508</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sai-pranav1" target="_blank" rel="noopener noreferrer">linkedin.com/in/sai-pranav1</a></p>
-      </section>
-    </div>
+    <!-- Certifications -->
+    <section id="certifications" class="container py-4">
+      <h2>Certifications</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Python for Data Science</li>
+        <li class="list-group-item">Certified Data Analyst Professional</li>
+        <li class="list-group-item">Tableau Desktop Specialist</li>
+      </ul>
+    </section>
+
   </div>
+
+  <!-- Your existing scripts remain untouched -->
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -372,5 +190,8 @@
     updateWeather();
     setInterval(updateWeather, 60000);
   </script>
+
+  <!-- Bootstrap JS Bundle (optional if you need) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
