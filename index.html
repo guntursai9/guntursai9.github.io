@@ -150,6 +150,36 @@
     footer a:hover {
       text-decoration: underline;
     }
+    /* Navbar styles */
+    nav {
+      background: #0288d1;
+      padding: 12px 30px;
+      border-radius: 0 0 12px 12px;
+      margin-bottom: 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #26c6da;
+      color: #004466;
+    }
     @media (max-width: 650px) {
       .container {
         border-radius: 0;
@@ -167,85 +197,39 @@
       p, li, span {
         font-size: 1rem;
       }
-    }
-    /* Navbar styling */
-    nav.navbar {
-      background:#fff; 
-      padding: 10px 20px; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-    }
-    nav.navbar a.navbar-brand {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #004466;
-      text-decoration: none;
-    }
-    nav.navbar ul.navbar-nav {
-      list-style:none; 
-      display:flex; 
-      gap:20px; 
-      margin:0; 
-      padding:0;
-      justify-content: flex-end;
-      align-items: center;
-    }
-    nav.navbar ul.navbar-nav li a.nav-link {
-      color: #004466;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    nav.navbar ul.navbar-nav li a.nav-link:hover {
-      color: #0288d1;
-      text-decoration: underline;
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
   <div id="container--main" class="container">
-    <!-- Navbar with corrected links -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="#">Sai Pranav</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link" href="#ProfessionalSummary">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="#TechnicalSkills">Technical Skills</a></li>
-              <li class="nav-item"><a class="nav-link" href="#WorkExperience">Work Experience</a></li>
-              <li class="nav-item"><a class="nav-link" href="#Certifications">Certifications</a></li>
-              <li class="nav-item"><a class="nav-link" href="waph.html">Course Introduction</a></li>
-          </ul>
-      </div>
+
+    <!-- Navbar -->
+    <nav>
+      <ul>
+        <li><a href="#About" class="active">About</a></li>
+        <li><a href="#technical-skills">Technical Skills</a></li>
+        <li><a href="#work-experience">Work Experience</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="waph.html">Course Introduction</a></li>
+      </ul>
     </nav>
 
     <div class="container">
-      <h1>Sai Pranav Lalitaditya Guntur</h1>
+      <h1 id="About">Sai Pranav Lalitaditya Guntur</h1>
 
-      <section id="ProfessionalSummary">
+      <section id="professional-summary">
         <h2>Professional Summary</h2>
         <p>
           Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. Proficient with cloud platforms such as Snowflake, AWS Redshift, and GCP BigQuery.
         </p>
       </section>
 
-      <section id="TechnicalSkills">
-        <h2>Technical Skills</h2>
-        <ul>
-          <li>SQL</li>
-          <li>Python</li>
-          <li>Tableau</li>
-          <li>Power BI</li>
-          <li>Predictive Analytics</li>
-          <li>Cloud Platforms: Snowflake, AWS Redshift, GCP BigQuery</li>
-        </ul>
-      </section>
-
-      <section id="WorkExperience">
+      <section id="work-experience">
         <h2>Experience</h2>
         <ul>
           <li>
@@ -253,29 +237,223 @@
             <ul>
               <li>Led customer segmentation efforts, boosting marketing conversion by 20%.</li>
               <li>Automated Power BI reports, reducing manual work by 35%.</li>
-              <li>Analyzed user behavior to increase engagement by 10%.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Data Analyst II</strong> – Oak Street Health (Aug 2023 – Present)
-            <ul>
-              <li>Improved decision-making efficiency through advanced analytics.</li>
-              <li>Enhanced forecasting accuracy for business growth strategies.</li>
+              <li>Improved user engagement by 10% through behavioral analytics.</li>
             </ul>
           </li>
         </ul>
       </section>
 
-      <!-- Added Certifications Section -->
-      <section id="Certifications">
+      <section id="technical-skills">
+        <h2>Technical Skills</h2>
+        <ul>
+          <li>SQL, Python, Tableau, Power BI</li>
+          <li>Predictive Analytics and Automation</li>
+          <li>Cloud Platforms: Snowflake, AWS Redshift, GCP BigQuery</li>
+        </ul>
+      </section>
+
+      <section id="certifications">
         <h2>Certifications</h2>
         <ul>
           <li>Python for Data Science</li>
-          <li>Google Data Analytics Professional Certificate</li>
-          <li>Microsoft Certified: Azure Data Fundamentals</li>
+          <li>Certified Data Analyst Professional</li>
+          <li>Tableau Desktop Specialist</li>
         </ul>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <div class="weather-joke">
+          <ul>
+            <li>
+              <strong>Weather API integration</strong> - Integrated real time weather data using weatherbit API
+            </li>
+          <p><strong>Real Time Weather (Dayton):</strong> <span id="weather"></span></p>
+          <li>
+              <strong>Joke API integration</strong> - Implemented a random joke fetcher using Joke API, generates random joke every 60 seconds
+            </li>
+          <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
+        </ul>
+        </div>
+      </section>
+
+      <section class="clock-section">
+        <h2>Current Time</h2>
+        <div id="clock"></div>
+        <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
+      </section>
+
+      <section class="flag-counter">
+        <h2>Flag Counter</h2>
+        <a href="https://info.flagcounter.com/zEr8" target="_blank" rel="noopener noreferrer">
+          <img src="https://s01.flagcounter.com/count2/zEr8/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0" />
+        </a>
+      </section>
+
+      <!-- Contact section moved to the bottom -->
+      <section>
+        <h2>Contact</h2>
+        <p><strong>Email:</strong> <a href="mailto:gunturs1@udayton.edu">gunturs1@udayton.edu</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+18015098508">+1 801-509-8508</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sai-pranav1" target="_blank" rel="noopener noreferrer">linkedin.com/in/sai-pranav1</a></p>
       </section>
     </div>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    var shown = false;
+    function showhideEmail() {
+      if (shown) {
+        document.getElementById("email").innerHTML = "Show my Email";
+        shown = false;
+      } else {
+        var myemail = "<a href='mailto:gunturs1@udayton.edu'>gunturs1@udayton.edu</a>";
+        document.getElementById("email").innerHTML = myemail;
+        shown = true;
+      }
+    }
+  </script>
+
+  <script>
+    // Clock - Digital
+    function updateClock() {
+      var now = new Date();
+      var time = now.toLocaleTimeString();
+      document.getElementById("clock").innerHTML = time;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Clock - Analog
+    var canvas = document.getElementById("analog-clock");
+    var ctx = canvas.getContext("2d");
+    var radius = canvas.height / 2;
+    ctx.translate(radius, radius);
+    radius = radius * 0.90;
+
+    function drawClock() {
+      drawFace(ctx, radius);
+      drawNumbers(ctx, radius);
+      drawTime(ctx, radius);
+    }
+
+    function drawFace(ctx, radius) {
+      var grad;
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+      ctx.fillStyle = "#b3e5fc";
+      ctx.fill();
+
+      grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+      grad.addColorStop(0, "#0288d1");
+      grad.addColorStop(0.5, "white");
+      grad.addColorStop(1, "#0288d1");
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = radius * 0.1;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+      ctx.fillStyle = "#0288d1";
+      ctx.fill();
+    }
+
+    function drawNumbers(ctx, radius) {
+      var ang;
+      var num;
+      ctx.font = radius * 0.15 + "px arial";
+      ctx.textBaseline = "middle";
+      ctx.textAlign = "center";
+      for (num = 1; num <= 12; num++) {
+        ang = (num * Math.PI) / 6;
+        ctx.rotate(ang);
+        ctx.translate(0, -radius * 0.85);
+        ctx.rotate(-ang);
+        ctx.fillText(num.toString(), 0, 0);
+        ctx.rotate(ang);
+        ctx.translate(0, radius * 0.85);
+        ctx.rotate(-ang);
+      }
+    }
+
+    function drawTime(ctx, radius) {
+      var now = new Date();
+      var hour = now.getHours();
+      var minute = now.getMinutes();
+      var second = now.getSeconds();
+
+      //hour
+      hour = hour % 12;
+      hour = (hour * Math.PI) / 6 + (minute * Math.PI) / (6 * 60) + (second * Math.PI) / (360 * 60);
+      drawHand(ctx, hour, radius * 0.5, radius * 0.07);
+
+      //minute
+      minute = (minute * Math.PI) / 30 + (second * Math.PI) / (30 * 60);
+      drawHand(ctx, minute, radius * 0.8, radius * 0.07);
+
+      // second
+      second = (second * Math.PI) / 30;
+      drawHand(ctx, second, radius * 0.9, radius * 0.02, "red");
+    }
+
+    function drawHand(ctx, pos, length, width, color = "#0288d1") {
+      ctx.beginPath();
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = color;
+      ctx.moveTo(0, 0);
+      ctx.rotate(pos);
+      ctx.lineTo(0, -length);
+      ctx.stroke();
+      ctx.rotate(-pos);
+    }
+
+    setInterval(drawClock, 1000);
+    drawClock();
+
+    // Weather API
+    function fetchWeather() {
+      fetch(
+        "https://api.weatherbit.io/v2.0/current?city=Dayton,OH,US&key=YOUR_WEATHERBIT_API_KEY"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const temp = data.data[0].temp;
+          const description = data.data[0].weather.description;
+          document.getElementById("weather").textContent = `${temp} °C, ${description}`;
+        })
+        .catch((error) => {
+          document.getElementById("weather").textContent = "Unable to fetch weather.";
+          console.error("Weather API error:", error);
+        });
+    }
+    fetchWeather();
+
+    // Joke API
+    function fetchJoke() {
+      fetch("https://v2.jokeapi.dev/joke/Any?type=single")
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("joke-container").textContent = data.joke;
+        })
+        .catch((error) => {
+          document.getElementById("joke-container").textContent = "No joke available.";
+          console.error("Joke API error:", error);
+        });
+    }
+    fetchJoke();
+    setInterval(fetchJoke, 60000);
+
+    // Navbar active link toggling
+    const navLinks = document.querySelectorAll("nav ul li a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        navLinks.forEach((l) => l.classList.remove("active"));
+        e.target.classList.add("active");
+      });
+    });
+  </script>
 </body>
 </html>
