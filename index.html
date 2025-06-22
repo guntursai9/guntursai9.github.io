@@ -1,272 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sai Pranav Lalitaditya Guntur - Portfolio</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
-      color: #222;
-      margin: 0;
-      padding: 80px 20px 40px;
-      min-height: 100vh;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #0288d1;
-      color: white;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      overflow: hidden;
-      background: #ffffffdd;
-      backdrop-filter: saturate(180%) blur(10px);
-    }
-    .photo {
-      text-align: center;
-      padding: 30px 0 10px;
-    }
-    .photo img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-      border: 4px solid #fff;
-    }
-    h1 {
-      font-size: 2.4rem;
-      text-align: center;
-      color: #004466;
-      margin: 10px 0 20px;
-      letter-spacing: 1px;
-    }
-    section {
-      padding: 25px 40px;
-    }
-    section:nth-child(odd) {
-      background: #ffffffee;
-      border-left: 6px solid #0288d1;
-    }
-    section:nth-child(even) {
-      background: #e1f5feee;
-      border-left: 6px solid #26c6da;
-    }
-    h2 {
-      font-size: 1.9rem;
-      border-bottom: 3px solid #0077cc;
-      padding-bottom: 8px;
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-    p, li, span {
-      font-size: 1.1rem;
-      color: #333;
-      line-height: 1.6;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    ul li {
-      margin-bottom: 10px;
-    }
-    .weather-joke {
-      background: #b3e5fc;
-      border-left: 5px solid #0288d1;
-      padding: 18px 22px;
-      border-radius: 8px;
-      margin-top: 15px;
-      font-style: italic;
-      color: #01579b;
-      box-shadow: 0 2px 8px rgba(2, 136, 209, 0.2);
-    }
-    .clock-section {
-      text-align: center;
-      padding-bottom: 40px;
-      border-bottom: 1px solid #ccc;
-    }
-    #clock {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #0077cc;
-      margin-bottom: 15px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #555;
-      border-top: 1px solid #ccc;
-      font-style: italic;
-    }
-    footer a {
-      color: #0288d1;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    @media (max-width: 650px) {
-      nav {
-        flex-wrap: wrap;
-        gap: 15px;
-        font-size: 0.9rem;
-      }
-      section {
-        padding: 20px 15px;
-      }
-    }
-  </style>
-</head>
-<body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://waph-phung.github.io/clock.js"></script>
 
-  <!-- Navbar -->
-  <nav>
-    <a href="#summary">Summary</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#clock">Clock</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<script>
+  // Clock
+  function updateClock() {
+    const now = new Date();
+    document.getElementById("clock-text").textContent = now.toLocaleTimeString();
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
 
-  <div class="container">
-    <div class="photo">
-      <img src="photo.jpg" alt="Sai Pranav Photo">
-    </div>
-    <h1>Sai Pranav Lalitaditya Guntur</h1>
+  var canvas = document.getElementById("analog-clock");
+  var ctx = canvas.getContext("2d");
+  var radius = canvas.height / 2;
+  ctx.translate(radius, radius);
+  radius = radius * 0.9;
+  setInterval(drawClock, 1000);
 
-    <section id="summary">
-      <h2>Professional Summary</h2>
-      <p>
-        Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. Proficient with cloud platforms such as Snowflake, AWS Redshift, and GCP BigQuery.
-      </p>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <ul>
-        <li>
-          <strong>Data Analyst</strong> – Tata Consultancy Services (Apr 2021 – Jun 2023)
-          <ul>
-            <li>Led customer segmentation efforts, boosting marketing conversion by 20%.</li>
-            <li>Automated Power BI reports, reducing manual work by 35%.</li>
-            <li>Improved user engagement by 10% through behavioral analytics.</li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-      <ul>
-        <li><strong>Master of Science in Computer Science</strong> – University of Dayton (Aug 2023 – Jun 2025)</li>
-        <li><strong>Bachelor of Technology in Electronics and Communications Engineering</strong> – BV Raju Institute of Technology (Aug 2017 – May 2021)</li>
-      </ul>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="weather-joke">
-        <ul>
-          <li><strong>Weather API Integration</strong> - Integrated real-time weather data using Weatherbit API.</li>
-          <p><strong>Real Time Weather (Dayton):</strong> <span id="weather"></span></p>
-          <li><strong>Joke API Integration</strong> - Implemented a random joke fetcher using Joke API, generates new jokes every 60 seconds.</li>
-          <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
-        </ul>
-      </div>
-    </section>
-
-    <section class="clock-section" id="clock">
-      <h2>Current Time</h2>
-      <div id="clock-text"></div>
-      <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p><strong>Email:</strong> <a href="mailto:gunturs1@udayton.edu">gunturs1@udayton.edu</a></p>
-      <p><strong>Phone:</strong> <a href="tel:+18015098508">+1 801-509-8508</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sai-pranav1" target="_blank" rel="noopener noreferrer">linkedin.com/in/sai-pranav1</a></p>
-    </section>
-
-    <footer>
-      &copy; 2025 Sai Pranav Lalitaditya Guntur. All rights reserved.
-    </footer>
-  </div>
-
-  <!-- JS Scripts -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://waph-phung.github.io/clock.js"></script>
-
-  <script>
-    function updateClock() {
-      const now = new Date();
-      document.getElementById("clock-text").textContent = now.toLocaleTimeString();
+  // Joke API (Reliable)
+  async function updateJoke() {
+    try {
+      const response = await fetch('https://v2.jokeapi.dev/joke/Any');
+      const data = await response.json();
+      const joke = data.type === 'single' ? data.joke : `${data.setup} ... ${data.delivery}`;
+      document.getElementById('joke-container').textContent = joke;
+    } catch (error) {
+      document.getElementById('joke-container').textContent = 'Failed to load joke.';
     }
-    setInterval(updateClock, 1000);
-    updateClock();
+  }
+  updateJoke();
+  setInterval(updateJoke, 60000);
 
-    var canvas = document.getElementById("analog-clock");
-    var ctx = canvas.getContext("2d");
-    var radius = canvas.height / 2;
-    ctx.translate(radius, radius);
-    radius = radius * 0.9;
-    setInterval(drawClock, 1000);
-
-    function updateJoke() {
-      $.getJSON('https://v2.jokeapi.dev/joke/Any', function(data) {
-        if (data.type === 'single') {
-          $('#joke-container').text(data.joke);
-        } else {
-          $('#joke-container').text(data.setup + ' ... ' + data.delivery);
-        }
-      });
+  // Weather API
+  async function updateWeather() {
+    const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';
+    const city = 'Dayton';
+    try {
+      const response = await fetch(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`);
+      const data = await response.json();
+      const weather = data.data[0];
+      const weatherText = `${weather.temp}°C, Humidity: ${weather.rh}%, Wind: ${weather.wind_spd.toFixed(1)} m/s`;
+      document.getElementById('weather').textContent = weatherText;
+    } catch (error) {
+      document.getElementById('weather').textContent = 'Unable to fetch weather data.';
     }
-    updateJoke();
-    setInterval(updateJoke, 60000);
-
-    function updateWeather() {
-      const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';
-      const city = 'Dayton';
-      $.getJSON(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`, function(data) {
-        const weather = data.data[0];
-        const weatherText = `${weather.temp}°C, Humidity: ${weather.rh}%, Wind Speed: ${weather.wind_spd.toFixed(1)} m/s`;
-        $('#weather').text(weatherText);
-      });
-    }
-    updateWeather();
-    setInterval(updateWeather, 60000);
-  </script>
-
-</body>
-</html>
+  }
+  updateWeather();
+  setInterval(updateWeather, 60000);
+</script>
