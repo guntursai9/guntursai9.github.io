@@ -70,7 +70,7 @@
     }
 
     .header img {
-      border-radius: 50%;
+      border-radius: 100%;
       width: 130px;
       height: 130px;
       object-fit: cover;
@@ -206,7 +206,7 @@
   <div class="container">
     <!-- Header -->
     <div class="header">
-      <img src="sai.jpg" alt="Sai Pranav Photo">
+      <img src="HeadShot.jpeg" alt="Sai Pranav Photo">
       <h1>Sai Pranav Lalitaditya Guntur</h1>
     </div>
 
@@ -232,6 +232,10 @@
             <li>Led customer segmentation efforts, boosting marketing conversion by 20%.</li>
             <li>Automated Power BI reports, reducing manual work by 35%.</li>
             <li>Improved user engagement by 10% through behavioral analytics.</li>
+            <li>Developed and implemented data models to analyze customer behavior, resulting in a 15% increase in targeted marketing campaigns"</li>
+            <li>Collaborated with cross-functional teams to identify and resolve data quality issues, improving data accuracy by 10%</li>
+            <li>Created interactive dashboards using Tableau to visualize key performance indicators, providing stakeholders with real-time insights</li>
+            <li>Conducted statistical analysis to identify trends and patterns in sales data, contributing to a 5% increase in sales revenue"</li>
           </ul>
         </li>
       </ul>
@@ -248,7 +252,7 @@
     <section id="weather">
       <h2>Weather & Joke Updates</h2>
       <div class="weather-joke">
-        <p><strong>Real Time Weather (Cincinnati):</strong> <span id="weather-info"></span></p>
+        <p><strong>Real Time Weather (Dayton):</strong> <span id="weather-info"></span></p>
         <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
       </div>
     </section>
@@ -324,8 +328,8 @@
     setInterval(fetchJoke, 60000);
 
     $(document).ready(function () {
-      const apiKey = 'e14b293239674d558c6d32069774b83d';
-      const weatherEndpoint = `https://api.weatherbit.io/v2.0/current?&key=${apiKey}&city=Cincinnati&country=US`;
+      const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';
+      const weatherEndpoint = `https://api.weatherbit.io/v2.0/current?&key=${apiKey}&city=Dayton&country=US`;
       $.get(weatherEndpoint, function (response) {
         const currentTemp = response.data[0].temp;
         const humidity = response.data[0].rh;
