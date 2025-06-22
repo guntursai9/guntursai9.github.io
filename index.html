@@ -122,12 +122,25 @@
         <li class="list-group-item">Tableau Desktop Specialist</li>
       </ul>
     </section>
-    <!-- Existing Clock Section -->
-    <section class="container py-4 text-center">
-      <h2>Current Time</h2>
-      <div id="clock" style="font-size: 2rem; font-weight: bold;"></div>
-      <canvas id="analog-clock" width="200" height="200" class="mx-auto d-block mt-3"></canvas>
+    <!-- Technical Requirement 1 -->
+    <section class="container py-4">
+      <h2 class="text-center mb-4">Technical Requirement 1</h2>
+    
+    <!-- Show/Hide Email -->
+      <div class="mb-4">
+        <h4>Email Toggle</h4>
+        <button onclick="showhideEmail()" class="btn btn-primary mb-2">Show my Email</button>
+        <div id="email" style="font-size: 1rem;"></div>
+      </div>
+    
+    <!-- Clock Section -->
+      <div class="mt-4">
+        <h4>Current Time</h4>
+        <div id="clock" style="font-size: 2rem; font-weight: bold;"></div>
+        <canvas id="analog-clock" width="200" height="200" class="d-block mt-3"></canvas>
+      </div>
     </section>
+
     <!-- Projects Section -->
     <section class="container py-4">
       <h2 class="text-center mb-4">Projects</h2>
