@@ -113,6 +113,14 @@
       margin-bottom: 15px;
       text-shadow: 0 1px 2px rgba(0,0,0,0.15);
     }
+    .pic{
+      width: #50px;
+      height: #50px;
+      border-radius: 50%;
+      object-fit:cover;
+      margin-bottom: 15px;
+      box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+    }
     #analog-clock {
       background-color: #b3e5fc;
       border-radius: 50%;
@@ -223,9 +231,10 @@
       <h1 id="About">Sai Pranav Lalitaditya Guntur</h1>
 
       <section id="professional-summary">
-        <h2>Professional Summary</h2>
+        <h2>About Me</h2>
+        <img src="HeadShot.jpeg" alt="my photo" id="pic"/>
         <p>
-          Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. Proficient with cloud platforms such as Snowflake, AWS Redshift, and GCP BigQuery.
+          Hello I am Sai Pranav Lalitaditya Guntur a Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. 
         </p>
       </section>
 
@@ -314,146 +323,54 @@
         shown = true;
       }
     }
-  </script>
 
-  <script>
-    // Clock - Digital
     function updateClock() {
-      var now = new Date();
-      var time = now.toLocaleTimeString();
-      document.getElementById("clock").innerHTML = time;
+      const now = new Date();
+      document.getElementById("clock").textContent = now.toLocaleTimeString();
     }
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Clock - Analog
     var canvas = document.getElementById("analog-clock");
     var ctx = canvas.getContext("2d");
     var radius = canvas.height / 2;
     ctx.translate(radius, radius);
-    radius = radius * 0.90;
+    radius = radius * 0.9;
+    setInterval(drawClock, 1000);
 
     function drawClock() {
       drawFace(ctx, radius);
       drawNumbers(ctx, radius);
       drawTime(ctx, radius);
     }
+  </script>
 
-    function drawFace(ctx, radius) {
-      var grad;
-      ctx.beginPath();
-      ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-      ctx.fillStyle = "#b3e5fc";
-      ctx.fill();
+  <script src="https://waph-phung.github.io/clock.js"></script>
 
-      grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
-      grad.addColorStop(0, "#0288d1");
-      grad.addColorStop(0.5, "white");
-      grad.addColorStop(1, "#0288d1");
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = radius * 0.1;
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
-      ctx.fillStyle = "#0288d1";
-      ctx.fill();
-    }
-
-    function drawNumbers(ctx, radius) {
-      var ang;
-      var num;
-      ctx.font = radius * 0.15 + "px arial";
-      ctx.textBaseline = "middle";
-      ctx.textAlign = "center";
-      for (num = 1; num <= 12; num++) {
-        ang = (num * Math.PI) / 6;
-        ctx.rotate(ang);
-        ctx.translate(0, -radius * 0.85);
-        ctx.rotate(-ang);
-        ctx.fillText(num.toString(), 0, 0);
-        ctx.rotate(ang);
-        ctx.translate(0, radius * 0.85);
-        ctx.rotate(-ang);
-      }
-    }
-
-    function drawTime(ctx, radius) {
-      var now = new Date();
-      var hour = now.getHours();
-      var minute = now.getMinutes();
-      var second = now.getSeconds();
-
-      //hour
-      hour = hour % 12;
-      hour = (hour * Math.PI) / 6 + (minute * Math.PI) / (6 * 60) + (second * Math.PI) / (360 * 60);
-      drawHand(ctx, hour, radius * 0.5, radius * 0.07);
-
-      //minute
-      minute = (minute * Math.PI) / 30 + (second * Math.PI) / (30 * 60);
-      drawHand(ctx, minute, radius * 0.8, radius * 0.07);
-
-      // second
-      second = (second * Math.PI) / 30;
-      drawHand(ctx, second, radius * 0.9, radius * 0.02, "red");
-    }
-
-    function drawHand(ctx, pos, length, width, color = "#0288d1") {
-      ctx.beginPath();
-      ctx.lineWidth = width;
-      ctx.lineCap = "round";
-      ctx.strokeStyle = color;
-      ctx.moveTo(0, 0);
-      ctx.rotate(pos);
-      ctx.lineTo(0, -length);
-      ctx.stroke();
-      ctx.rotate(-pos);
-    }
-
-    setInterval(drawClock, 1000);
-    drawClock();
-
-    // Weather API
-    function fetchWeather() {
-      fetch(
-        "https://api.weatherbit.io/v2.0/current?city=Dayton,OH,US&key=YOUR_WEATHERBIT_API_KEY"
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          const temp = data.data[0].temp;
-          const description = data.data[0].weather.description;
-          document.getElementById("weather").textContent = `${temp} °C, ${description}`;
-        })
-        .catch((error) => {
-          document.getElementById("weather").textContent = "Unable to fetch weather.";
-          console.error("Weather API error:", error);
-        });
-    }
-    fetchWeather();
-
-    // Joke API
-    function fetchJoke() {
-      fetch("https://v2.jokeapi.dev/joke/Any?type=single")
-        .then((response) => response.json())
-        .then((data) => {
-          document.getElementById("joke-container").textContent = data.joke;
-        })
-        .catch((error) => {
-          document.getElementById("joke-container").textContent = "No joke available.";
-          console.error("Joke API error:", error);
-        });
-    }
-    fetchJoke();
-    setInterval(fetchJoke, 60000);
-
-    // Navbar active link toggling
-    const navLinks = document.querySelectorAll("nav ul li a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        navLinks.forEach((l) => l.classList.remove("active"));
-        e.target.classList.add("active");
+  <script>
+    function updateJoke() {
+      $.getJSON('https://v2.jokeapi.dev/joke/Any', function(data) {
+        if (data.type === 'single') {
+          $('#joke-container').text(data.joke);
+        } else {
+          $('#joke-container').text(data.setup + ' ... ' + data.delivery);
+        }
       });
-    });
+    }
+    updateJoke();
+    setInterval(updateJoke, 60000);
+
+    function updateWeather() {
+      const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';
+      const city = 'Dayton';
+      $.getJSON(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`, function(data) {
+        const weather = data.data[0];
+        const weatherText = `${weather.temp}°C, Humidity: ${weather.rh}%, Wind Speed: ${weather.wind_spd.toFixed(1)} m/s`;
+        $('#weather').text(weatherText);
+      });
+    }
+    updateWeather();
+    setInterval(updateWeather, 60000);
   </script>
 </body>
 </html>
