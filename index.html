@@ -204,10 +204,18 @@
     </section>
 
     <section>
-      <h2>Weather & Joke Updates</h2>
+      <h2>Projects</h2>
       <div class="weather-joke">
+        <ul>
+          <li>
+            <strong>Weather API integration</strong> - Integrated real time weather data using weatherbit API
+          </li>
         <p><strong>Real Time Weather (Dayton):</strong> <span id="weather"></span></p>
+        <li>
+            <strong>Joke API integration</strong> - Implemented a random joke fetcher using Joke API, generrates random joke for every 60 seconds
+          </li>
         <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
+      </ul>
       </div>
     </section>
 
@@ -285,7 +293,7 @@
     setInterval(updateJoke, 60000);
 
     function updateWeather() {
-      const apiKey = 'cd5abf1949e940d79292a94a6e548557';
+      const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';
       const city = 'Dayton';
       $.getJSON(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}`, function(data) {
         const weather = data.data[0];
