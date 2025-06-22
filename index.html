@@ -106,7 +106,7 @@
       font-weight: 700;
       user-select: none;
       display: inline-block;
-      margin-top: 10px;
+      margin-bottom: 10px;
     }
     #email:hover {
       text-decoration: underline;
@@ -124,7 +124,7 @@
       text-align: center;
       padding-bottom: 40px;
     }
-    #clock {
+    #clock-display {
       font-size: 1.8rem;
       font-weight: 700;
       color: #0077cc;
@@ -167,7 +167,6 @@
   <!-- Navigation -->
   <nav>
     <ul>
-      <li><a href="#contact">Contact</a></li>
       <li><a href="#summary">Summary</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
@@ -175,22 +174,18 @@
       <li><a href="#weather">Weather & Joke</a></li>
       <li><a href="#clock">Clock</a></li>
       <li><a href="#flags">Flags</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <div class="container">
     <!-- Header -->
     <div class="header">
-      <img src="HeadShot.jpeg" alt="Sai Pranav Photo">
+      <img src="HeadShot.jpeg" alt="Sai Pranav Photo" />
       <h1>Sai Pranav Lalitaditya Guntur</h1>
     </div>
 
     <!-- Sections -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p id="email" onclick="showhideEmail()">Show my Email</p>
-    </section>
-
     <section id="summary">
       <h2>Professional Summary</h2>
       <p>
@@ -254,6 +249,17 @@
         <img src="https://s01.flagcounter.com/count2/zEr8/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" />
       </a>
     </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p id="email" onclick="showhideEmail()">Show my Email</p>
+      <p><strong>Phone:</strong> <a href="tel:+18015098508" style="color:#0077cc; text-decoration:none;">(+1) 801-509-8508</a></p>
+      <p><strong>LinkedIn:</strong> 
+        <a href="https://www.linkedin.com/in/sai-pranav1" target="_blank" rel="noopener noreferrer" style="color:#0077cc; text-decoration:none;">
+          linkedin.com/in/sai-pranav1
+        </a>
+      </p>
+    </section>
   </div>
 
   <footer>
@@ -299,29 +305,116 @@
     function fetchJoke() {
       $.ajax({
         url: 'https://v2.jokeapi.dev/joke/Any',
-        type: 'GET',
-        success: function (data) {
-          const joke = data.setup ? `${data.setup} ${data.delivery}` : data.joke;
-          $('#joke-container').text(joke);
+        method: 'GET',
+        success: function(data) {
+          if(data.setup && data.delivery){
+            $('#joke-container').text(data.setup + " - " + data.delivery);
+          } else {
+            $('#joke-container').text(data.joke || "No joke found.");
+          }
         },
-        error: function () {
-          $('#joke-container').text('Failed to load joke.');
+        error: function() {
+          $('#joke-container').text("Couldn't load joke.");
         }
       });
     }
-    fetchJoke();
-    setInterval(fetchJoke, 60000);
 
-    $(document).ready(function () {
-      const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';
-      const weatherEndpoint = `https://api.weatherbit.io/v2.0/current?&key=${apiKey}&city=Dayton&country=US`;
-      $.get(weatherEndpoint, function (response) {
-        const currentTemp = response.data[0].temp;
-        const humidity = response.data[0].rh;
-        const windSpeed = response.data[0].wind_spd;
-        $('#weather-info').html(`${currentTemp}°C, Humidity: ${humidity}%, Wind Speed: ${windSpeed} m/s`);
+    function fetchWeather() {
+      // Dayton coordinates
+      const lat = 39.7589;
+      const lon = -84.1916;
+      const apiKey = "YOUR_OPENWEATHERMAP_API_KEY"; // Replace with your own OpenWeatherMap API key
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+
+      $.ajax({
+        url: url,
+        method: 'GET',
+        success: function(data) {
+          const temp = data.main.temp.toFixed(1);
+          const description = data.weather[0].description;
+          $('#weather-info').text(`${temp}°F, ${description}`);
+        },
+        error: function() {
+          $('#weather-info').text("Unable to retrieve weather data.");
+        }
       });
-    });
+    }
+
+    function drawFace(ctx, radius) {
+      var grad;
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+      ctx.fillStyle = 'white';
+      ctx.fill();
+      grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+      grad.addColorStop(0, '#0288d1');
+      grad.addColorStop(0.5, 'white');
+      grad.addColorStop(1, '#0288d1');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = radius*0.1;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+      ctx.fillStyle = '#0288d1';
+      ctx.fill();
+    }
+
+    function drawNumbers(ctx, radius) {
+      var ang;
+      var num;
+      ctx.font = radius*0.15 + "px arial";
+      ctx.textBaseline="middle";
+      ctx.textAlign="center";
+      for(num = 1; num < 13; num++){
+        ang = num * Math.PI / 6;
+        ctx.rotate(ang);
+        ctx.translate(0, -radius*0.85);
+        ctx.rotate(-ang);
+        ctx.fillText(num.toString(), 0, 0);
+        ctx.rotate(ang);
+        ctx.translate(0, radius*0.85);
+        ctx.rotate(-ang);
+      }
+    }
+
+    function drawTime(ctx, radius){
+      var now = new Date();
+      var hour = now.getHours();
+      var minute = now.getMinutes();
+      var second = now.getSeconds();
+      //hour
+      hour=hour%12;
+      hour=(hour*Math.PI/6)+
+      (minute*Math.PI/(6*60))+
+      (second*Math.PI/(360*60));
+      drawHand(ctx, hour, radius*0.5, radius*0.07);
+      //minute
+      minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+      drawHand(ctx, minute, radius*0.8, radius*0.07);
+      // second
+      second=(second*Math.PI/30);
+      drawHand(ctx, second, radius*0.9, radius*0.02, '#d32f2f');
+    }
+
+    function drawHand(ctx, pos, length, width, color='#0288d1') {
+      ctx.beginPath();
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = color;
+      ctx.moveTo(0,0);
+      ctx.rotate(pos);
+      ctx.lineTo(0, -length);
+      ctx.stroke();
+      ctx.rotate(-pos);
+    }
+
+    // Initial load
+    fetchWeather();
+    fetchJoke();
+
+    // Refresh weather and joke every 10 minutes
+    setInterval(fetchWeather, 600000);
+    setInterval(fetchJoke, 600000);
   </script>
 </body>
 </html>
