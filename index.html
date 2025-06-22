@@ -5,44 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sai Pranav Lalitaditya Guntur - Portfolio</title>
   <style>
-    /* Reset */
+    /* Reset & Base */
     * {
       box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
       color: #222;
       margin: 0;
-      padding: 40px 20px;
+      padding: 40px 20px 0;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
       flex-direction: column;
+      align-items: center;
     }
+
+    /* Navbar */
     nav {
       width: 100%;
-      max-width: 900px;
       background: #0288d1;
-      padding: 10px 0;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      margin-bottom: 30px;
+      padding: 12px 0;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     nav a {
       color: white;
-      margin: 0 15px;
-      font-weight: 700;
       text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
       font-size: 1.1rem;
-      transition: color 0.3s ease;
     }
     nav a:hover {
-      color: #80deea;
       text-decoration: underline;
     }
+
     .container {
       max-width: 900px;
       width: 100%;
@@ -52,7 +54,8 @@
       background: #ffffffdd;
       backdrop-filter: saturate(180%) blur(10px);
     }
-    h1, h2, h3 {
+
+    h1, h2 {
       color: #004466;
       margin-bottom: 15px;
       text-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -66,11 +69,11 @@
       margin: 0;
       letter-spacing: 1.1px;
     }
+
     section {
       padding: 25px 40px;
       transition: background-color 0.3s ease;
     }
-    /* Alternate section backgrounds */
     section:nth-child(odd) {
       background: #ffffffee;
       border-left: 6px solid #0288d1;
@@ -88,18 +91,12 @@
       margin-bottom: 20px;
       font-weight: 700;
     }
-    h3 {
-      font-size: 1.4rem;
-      margin-top: 0;
-      margin-bottom: 12px;
-      font-weight: 600;
-      color: #01579b;
-    }
     p, li, span {
       font-size: 1.1rem;
       color: #333;
       line-height: 1.6;
     }
+
     ul {
       padding-left: 20px;
       margin-top: 10px;
@@ -107,19 +104,7 @@
     ul li {
       margin-bottom: 10px;
     }
-    #email {
-      color: #0077cc;
-      cursor: pointer;
-      font-weight: 700;
-      user-select: none;
-      display: inline-block;
-      margin-top: 10px;
-      transition: color 0.3s ease;
-    }
-    #email:hover {
-      color: #004466;
-      text-decoration: underline;
-    }
+
     .weather-joke {
       background: #b3e5fc;
       border-left: 5px solid #0288d1;
@@ -130,6 +115,7 @@
       color: #01579b;
       box-shadow: 0 2px 8px rgba(2, 136, 209, 0.2);
     }
+
     .clock-section {
       text-align: center;
       margin-top: 15px;
@@ -143,18 +129,12 @@
       margin-bottom: 15px;
       text-shadow: 0 1px 2px rgba(0,0,0,0.15);
     }
-    #analog-clock {
-      background-color: #b3e5fc;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #0288d1 inset;
-      display: block;
-      margin: 0 auto;
-      border: 3px solid #0288d1;
-    }
+
     .flag-counter {
       margin: 35px auto 40px;
       text-align: center;
     }
+
     .flag-counter img {
       border: 1px solid #81d4fa;
       border-radius: 10px;
@@ -162,6 +142,7 @@
       max-width: 100%;
       height: auto;
     }
+
     footer {
       margin-top: 40px;
       padding: 20px;
@@ -180,11 +161,8 @@
     footer a:hover {
       text-decoration: underline;
     }
+
     @media (max-width: 650px) {
-      nav a {
-        display: block;
-        margin: 8px 0;
-      }
       .container {
         border-radius: 0;
       }
@@ -198,31 +176,31 @@
       h2 {
         font-size: 1.5rem;
       }
-      h3 {
-        font-size: 1.2rem;
-      }
       p, li, span {
         font-size: 1rem;
+      }
+      nav a {
+        display: block;
+        margin: 8px 0;
       }
     }
   </style>
 </head>
 <body>
-
   <nav>
-    <a href="#professional-summary">Professional Summary</a>
+    <a href="#summary">Summary</a>
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
     <a href="#projects">Projects</a>
-    <a href="#current-time">Current Time</a>
-    <a href="#flag-counter">Flag Counter</a>
+    <a href="#clock">Clock</a>
+    <a href="#flags">Flags</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <div class="container">
     <h1>Sai Pranav Lalitaditya Guntur</h1>
 
-    <section id="professional-summary">
+    <section id="summary">
       <h2>Professional Summary</h2>
       <p>
         Data Analyst with over 4 years of experience in transforming raw data into actionable insights to drive business growth and optimize operations. Skilled in SQL, Python, Tableau, Power BI, predictive analytics, and automation. Proficient with cloud platforms such as Snowflake, AWS Redshift, and GCP BigQuery.
@@ -253,25 +231,19 @@
 
     <section id="projects">
       <h2>Projects</h2>
-      
       <div class="weather-joke">
-        <h3>Joke API Integration</h3>
-        <p><strong>Random Joke:</strong> <span id="joke-container"></span></p>
-      </div>
-      
-      <div class="weather-joke" style="margin-top: 30px;">
-        <h3>Weather API Integration</h3>
-        <p><strong>Real Time Weather (Dayton):</strong> <span id="weather"></span></p>
+        <p><strong>Weather API Integration (Dayton):</strong> <span id="weather"></span></p>
+        <p><strong>Joke API Integration:</strong> <span id="joke-container"></span></p>
       </div>
     </section>
 
-    <section id="current-time" class="clock-section">
+    <section class="clock-section" id="clock">
       <h2>Current Time</h2>
       <div id="clock"></div>
       <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
     </section>
 
-    <section id="flag-counter" class="flag-counter">
+    <section class="flag-counter" id="flags">
       <h2>Flag Counter</h2>
       <a href="https://info.flagcounter.com/zEr8" target="_blank" rel="noopener noreferrer">
         <img src="https://s01.flagcounter.com/count2/zEr8/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0" />
@@ -280,13 +252,14 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Phone: <a href="tel:+18015098508">(+1) 801-509-8508</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/sai-pranav1" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/sai-pranav1</a></p>
-      <p id="email" onclick="showhideEmail()" style="cursor:pointer;">Show my Email</p>
+      <p><strong>Phone:</strong> (+1) 801-509-8508</p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sai-pranav1" target="_blank">linkedin.com/in/sai-pranav1</a></p>
+      <p id="email" onclick="showhideEmail()">Show my Email</p>
     </section>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://waph-phung.github.io/clock.js"></script>
 
   <script>
     var shown = false;
@@ -321,101 +294,33 @@
       drawTime(ctx, radius);
     }
 
-    function drawFace(ctx, radius) {
-      var grad;
-      ctx.beginPath();
-      ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-      ctx.fillStyle = 'white';
-      ctx.fill();
-      grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
-      grad.addColorStop(0, '#0288d1');
-      grad.addColorStop(0.5, 'white');
-      grad.addColorStop(1, '#0288d1');
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = radius*0.1;
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
-      ctx.fillStyle = '#0288d1';
-      ctx.fill();
+    function fetchJoke() {
+      $.ajax({
+        url: 'https://v2.jokeapi.dev/joke/Any',
+        type: 'GET',
+        success: function (data) {
+          var joke = data.setup ? data.setup + ' ' + data.delivery : data.joke;
+          $('#joke-container').text(joke);
+        },
+        error: function () {
+          $('#joke-container').text('Failed to load joke.');
+        }
+      });
     }
 
-    function drawNumbers(ctx, radius) {
-      var ang;
-      var num;
-      ctx.font = radius*0.15 + "px arial";
-      ctx.textBaseline="middle";
-      ctx.textAlign="center";
-      for(num = 1; num < 13; num++){
-        ang = num * Math.PI / 6;
-        ctx.rotate(ang);
-        ctx.translate(0, -radius*0.85);
-        ctx.rotate(-ang);
-        ctx.fillText(num.toString(), 0, 0);
-        ctx.rotate(ang);
-        ctx.translate(0, radius*0.85);
-        ctx.rotate(-ang);
-      }
-    }
-
-    function drawTime(ctx, radius){
-      var now = new Date();
-      var hour = now.getHours();
-      var minute = now.getMinutes();
-      var second = now.getSeconds();
-      hour=hour%12;
-      hour=(hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));
-      drawHand(ctx, hour, radius*0.5, radius*0.07);
-      minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
-      drawHand(ctx, minute, radius*0.8, radius*0.07);
-      second=(second*Math.PI/30);
-      drawHand(ctx, second, radius*0.9, radius*0.02, '#d50000');
-    }
-
-    function drawHand(ctx, pos, length, width, color) {
-      color = color || '#0288d1';
-      ctx.beginPath();
-      ctx.lineWidth = width;
-      ctx.lineCap = "round";
-      ctx.strokeStyle = color;
-      ctx.moveTo(0,0);
-      ctx.rotate(pos);
-      ctx.lineTo(0, -length);
-      ctx.stroke();
-      ctx.rotate(-pos);
-    }
-
-    // Joke API Integration
-    async function fetchJoke() {
-      try {
-        const response = await fetch('https://official-joke-api.appspot.com/random_joke');
-        const joke = await response.json();
-        document.getElementById('joke-container').textContent = joke.setup + " — " + joke.punchline;
-      } catch (e) {
-        document.getElementById('joke-container').textContent = "Sorry, no joke available.";
-      }
-    }
     fetchJoke();
+    setInterval(fetchJoke, 60000);
 
-    // Weather API Integration
-    async function fetchWeather() {
-      try {
-        // Replace YOUR_API_KEY with a valid OpenWeatherMap API key for real data
-        const apiKey = 'YOUR_API_KEY';
-        const city = 'Dayton';
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.json();
-        const temp = data.main.temp;
-        const description = data.weather[0].description;
-        document.getElementById('weather').textContent = `${temp} °F, ${description}`;
-      } catch (e) {
-        document.getElementById('weather').textContent = "Weather data unavailable.";
-      }
-    }
-    fetchWeather();
+    $(document).ready(function () {
+      const apiKey = '7e8b4e67f8f541c69b4cbdbfebfcdd17';  
+      const weatherEndpoint = `https://api.weatherbit.io/v2.0/current?&key=${apiKey}&city=Dayton&country=US`;
+      $.get(weatherEndpoint, function (response) {
+        const currentTemp = response.data[0].temp;
+        const humidity = response.data[0].rh;
+        const windSpeed = response.data[0].wind_spd;
+        $('#weather').html(`${currentTemp}°C, Humidity: ${humidity}%, Wind Speed: ${windSpeed} m/s`);
+      });
+    });
   </script>
-
 </body>
 </html>
