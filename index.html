@@ -175,6 +175,16 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <script>
+    
+        let lastVisitTime = document.cookie.match(/(^|;) ?lastVisit=([^;]*)(;|$)/);
+        let message = lastVisitTime ? "Welcome back! Your last visit was " + lastVisitTime[2] : "Welcome to my homepage!";
+        alert(message);
+
+        
+        let currentDate = new Date();
+        let expirationDate = new Date(currentDate.getTime() + 30 * 86400000); // 86400000 ms in a day
+        document.cookie = `lastVisit=${currentDate}; expires=${expirationDate.toUTCString()}; path=/`;
+    
     var shown = false;
     function showhideEmail() {
       if (shown) {
