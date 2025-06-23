@@ -175,15 +175,26 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <script>
-    
-        let lastVisitTime = document.cookie.match(/(^|;) ?lastVisit=([^;]*)(;|$)/);
-        let message = lastVisitTime ? "Welcome back! Your last visit was " + lastVisitTime[2] : "Welcome to my homepage!";
-        alert(message);
+   
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+  
+    // Cookie logic
+    const lastVisit = getCookie('lastVisit');
+    if (lastVisit) {
+      alert(`Welcome back! Your last visit was ${lastVisit}`);
+    } else {
+      alert("Welcome to my homepage for the first time!");
+    }
+  
+    const now = new Date();
+    const expires = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // 30 days
+    document.cookie = `lastVisit=${now.toLocaleString()}; expires=${expires.toUTCString()}; path=/`;
 
-        
-        let currentDate = new Date();
-        let expirationDate = new Date(currentDate.getTime() + 30 * 86400000); // 86400000 ms in a day
-        document.cookie = `lastVisit=${currentDate}; expires=${expirationDate.toUTCString()}; path=/`;
+
     
     var shown = false;
     function showhideEmail() {
